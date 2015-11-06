@@ -31,13 +31,42 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services' ])
       templateUrl: 'templates/register.html',
       controller: 'RegisterCtrl'
   })
- /* .state('home',{
-      url: '/home',
-      templateUrl: 'templates/home.html',
-      controller/: 'HomeCtrl'
+    .state('adminhome', {
+      url: '/adminhome',
+      templateUrl: 'templates/adminhome.html',
+      controller: 'adminCtrl'
   })
-  */
+    .state('main', {
+      url: '/main',
+      templateUrl: 'templates/main.html',
+      controller: 'MainCtrl'
+  })
+      .state('studentlogin', {
+      url: '/studentlogin',
+      templateUrl: 'templates/studentlogin.html',
+      controller: 'studentloginCtrl'
+  })
+        .state('studenthome', {
+      url: '/studenthome:username',
+      templateUrl: 'templates/studenthome.html',
+      controller: 'studenthomeCtrl'
+  })
+          .state('qrpage', {
+      url: '/qrpage',
+      templateUrl: 'templates/qrpage.html',
+      controller: 'qrpageCtrl'
+  })
+            .state('view', {
+      url: '/view:username',
+      templateUrl: 'templates/view.html',
+      controller: 'viewCtrl'
+  })
+            .state('scan', {
+      url: '/scan',
+      templateUrl: 'templates/scan.html',
+     // controller: 'scanCtrl'
+  })
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/main');
 
 });

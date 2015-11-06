@@ -21,7 +21,7 @@ function DatabaseFactory() {}
 DatabaseFactory.prototype.studentClass = StudentDatabase;
  
 // Our Factory method for creating new Vehicle instances
-VehicleFactory.prototype.createStudent = function ( options ) {
+DatabaseFactory.prototype.createStudent = function ( options ) {
  
   return new this.studentClass( options );
 };

@@ -14,7 +14,40 @@ angular.module('starter.services', [])
       if (name == data[0].username && pw == data[0].password) {
                 deferred.resolve('Welcome ' + data[0].username + '!');
             } else {
-                deferred.reject('Username and Password does not matchs');
+                deferred.reject('Wrong credentials.');
+            }
+                 
+    })
+    promise.success = function(fn) {
+                promise.then(fn);
+                return promise;
+            }
+            promise.error = function(fn) {
+                promise.then(null, fn);
+                return promise;
+            }
+            return promise;
+                
+            
+        }
+    }
+})
+.service('StudentLoginService', function($q, $http) {
+    return {
+  loginUser: function(name, pw) {
+            var deferred = $q.defer();
+            var promise = deferred.promise;
+ 
+             $http({
+        method: 'GET',
+        url: 'https://api.mongolab.com/api/1/databases/studentdatabase/collections/students?q={username:\''+name+'\'}&apiKey=YX7u8tAPVPJBaLJq9geRsCwisBWMfIAz',
+        contentType:"application/json"
+        
+    }).success(function(data){
+      if (name == data[0].username && pw == data[0].password) {
+                deferred.resolve('Welcome ' + data[0].username + '!');
+            } else {
+                deferred.reject('Wrong credentials.');
             }
                  
     })
@@ -127,7 +160,7 @@ angular.module('starter.services', [])
 
 .service('RegisterService', function($q, $http) {
     return {
-        RegisterUser: function(fname, email, username, password) {
+        RegisterUser: function(fname, lname, address, age, email, username, password) {
             var deferred = $q.defer();
             var promise = deferred.promise;
           $http({
@@ -135,6 +168,9 @@ angular.module('starter.services', [])
         url: 'https://api.mongolab.com/api/1/databases/studentdatabase/collections/students?apiKey=YX7u8tAPVPJBaLJq9geRsCwisBWMfIAz',
         data: JSON.stringify({
        firstname: fname,
+        lastname: lname,
+        address: address,
+        age: age,
         email: email,
         username: username,
         password: password,

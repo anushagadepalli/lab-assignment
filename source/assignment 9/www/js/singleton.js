@@ -14,10 +14,10 @@ var User = (function () {
     return {
       // Public methods
       username: function () {
-        return instance.user;
+        return instance.username;
       },
       //Public Properties
-      user : "agyn2"
+      username : "username"
     };
   };
 
